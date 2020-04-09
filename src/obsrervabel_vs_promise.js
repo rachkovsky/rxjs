@@ -1,6 +1,9 @@
+import { Observable } from 'rxjs';
+
+
 // Creation:
 
-const observable1 = new Rx.Observable(subscriberFunc);
+const observable1 = new Observable(subscriberFunc);
 function subscriberFunc(observer) {
     observer.next('value1 from observable 1');
     //observer.error('error');
@@ -12,7 +15,6 @@ function executorFunc(resolve, reject) {
     resolve('value from promise 1');
     reject('error from promise 1');
 }
-
 
 
 
@@ -54,7 +56,7 @@ function onRejected(error) {
     // This prints: 1
 
 
-    const observable2 = new Rx.Observable(observer => {
+    const observable2 = new Observable(observer => {
         observer.next(1);
         observer.next(2);
         observer.next(3);
@@ -90,7 +92,7 @@ function onRejected(error) {
 
     // Observable
 
-    const observable3 = new Rx.Observable(observer => {
+    const observable3 = new Observable(observer => {
         console.log("- Executing");
         observer.next();
     });
@@ -132,13 +134,13 @@ function onRejected(error) {
 
     
     //Observables:
-    const observable4 = new Rx.Observable(observer => {
+    const observable4 = new Observable(observer => {
         setTimeout(() => {
             console.log("Async task done");
             observer.next();
         }, 2000);
     });
-    subscription = observable4.subscribe(() => console.log("Handler"));
+    const subscription = observable4.subscribe(() => console.log("Handler"));
     subscription.unsubscribe();
 
     //This prints (after 2 seconds):
@@ -172,7 +174,7 @@ function onRejected(error) {
 
     // Observables:
 
-    const observable5 = new Rx.Observable(observer => {
+    const observable5 = new Observable(observer => {
         console.log("Executing...");
         observer.next(Math.random());
     });
